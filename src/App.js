@@ -50,10 +50,10 @@ const App = () => {
             renders the first one that matches the current URL. */}
              <Switch>
              <Route exact path="/about">
-                   <About aboutText="About"/>
+                   <About aboutText="About us" mode={mode}/>
              </Route>
              <Route exact path="/">
-                   <TextForm heading="Enter the text to analyze" mode={mode} showAlert={showAlert} />
+                   <TextForm heading="Try TextTract - Enter the text to analyze" mode={mode} showAlert={showAlert} />
              </Route>
              </Switch>
             </div>

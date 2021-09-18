@@ -58,6 +58,7 @@ const TextForm = (props) => {
       newText.select();
       navigator.clipboard.writeText(newText.value);
       props.showAlert("Text Copied to Clipboard!","success");//Passing alert
+      document.getSelection().removeAllRanges();
       }
     }
 
@@ -89,7 +90,7 @@ const TextForm = (props) => {
     return (
       <>
         <div className="container" style={{color:props.mode==="light"?"black":"white"}}>
-            <h1>{props.heading}</h1>
+            <h1 className="mb-3">{props.heading}</h1>
             <div className="mb-3">
             <textarea
                   className="form-control"
@@ -104,19 +105,19 @@ const TextForm = (props) => {
             >
             </textarea>
       </div>
-            <button type="button" className={`btn btn-${props.mode==="light"?"success":"dark"} mx-1`} onClick={handleUpperCaseClick}>Convert to Upper Case</button>
-            <button type="button" className={`btn btn-${props.mode==="light"?"success":"dark"} mx-1`} onClick={handleLowerCaseClick}>Convert to Lower Case</button>
-            <button type="button" className={`btn btn-${props.mode==="light"?"success":"dark"} mx-1`} onClick={handleClickClear}>Clear Text</button>
-            <button type="button" className={`btn btn-${props.mode==="light"?"success":"dark"} mx-1`} onClick={handleCopy}>Copy Text</button>
-            <button type="button" className={`btn btn-${props.mode==="light"?"success":"dark"} mx-1`} onClick={handleExtraSpaces}>Remove Extra Whitespaces</button>
-            <button type="button" className={`btn btn-${props.mode==="light"?"success":"dark"} mx-1`} onClick={handleSpecialChars}>Remove Special Chracters & Numbers</button>
+            <button type="button" className={`btn btn-${props.mode==="light"?"success":"dark"} mx-1 my-1`} onClick={handleUpperCaseClick}>Convert to Upper Case</button>
+            <button type="button" className={`btn btn-${props.mode==="light"?"success":"dark"} mx-1 my-1`} onClick={handleLowerCaseClick}>Convert to Lower Case</button>
+            <button type="button" className={`btn btn-${props.mode==="light"?"success":"dark"} mx-1 my-1`} onClick={handleClickClear}>Clear Text</button>
+            <button type="button" className={`btn btn-${props.mode==="light"?"success":"dark"} mx-1 my-1`} onClick={handleCopy}>Copy Text</button>
+            <button type="button" className={`btn btn-${props.mode==="light"?"success":"dark"} mx-1 my-1`} onClick={handleExtraSpaces}>Remove Extra Whitespaces</button>
+            <button type="button" className={`btn btn-${props.mode==="light"?"success":"dark"} mx-1 my-1`} onClick={handleSpecialChars}>Remove Special Chracters & Numbers</button>
       </div>
       <div className="container my-3" style={{color:props.mode==="light"?"black":"white"}}>
            <h2> Your text's summary</h2>
            <p> {wordCount} words and {characterCount} characters </p>
            <p> {0.008*wordCount} minutes can be spent to read the above entered text. </p>
            <h2>Preview</h2>
-           <p>{text.length>0 ? text : "Enter something in the textbox above to preview it here"}</p>
+           <p>{text.length>0 ? text : "No text to preview"}</p>
       </div>
     </>  
   );
